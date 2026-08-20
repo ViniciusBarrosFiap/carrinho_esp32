@@ -1,0 +1,42 @@
+COMPONENTES - CARRINHO BLUETOOTH COM ESP32
+============================================
+
+1x ESP32 (DevKit V1 ou similar)
+1x Ponte H L298N
+2x Motor DC
+2x Pilha de litio formato AA (4,2V cada)
+1x Caixa de suporte para pilhas (porta-pilhas)
+8x Jumpers (fios de conexao macho-macho ou conforme os pinos usados)
+
+============================================
+OBSERVACOES IMPORTANTES
+============================================
+
+- As pilhas sao de litio (4,2V cada), NAO pilhas comuns. Duas em serie
+  resultam em ate 8,4V com carga cheia.
+
+- O jumper de 5V do modulo L298N deve ser removido, ja que o
+  regulador interno da placa pode nao suportar bem essa tensao
+  de entrada de forma continua. Verifique o datasheet do seu
+  modulo especifico para confirmar o limite.
+
+- E necessario alimentar o ESP32 separadamente da saida de 5V do
+  L298N apos a remocao do jumper (ligar no pino VIN ou 5V do ESP32,
+  conforme a placa).
+
+- O GND das pilhas, do L298N e do ESP32 devem estar todos
+  interligados (malha de terra comum).
+
+============================================
+MAPEAMENTO DE PINOS (conforme o codigo)
+============================================
+
+L298N IN1  -> ESP32 GPIO 25
+L298N IN2  -> ESP32 GPIO 26
+L298N IN3  -> ESP32 GPIO 27
+L298N IN4  -> ESP32 GPIO 14
+L298N GND  -> ESP32 GND
+L298N +12V -> Positivo do porta-pilhas
+L298N GND  -> Negativo do porta-pilhas
+L298N OUT1/OUT2 -> Motor A
+L298N OUT3/OUT4 -> Motor B
